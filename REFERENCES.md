@@ -6,10 +6,11 @@
 4. [STABLE FILTERING - PART 1](https://caseymuratori.com/blog_0035)([Перевод](https://habr.com/ru/post/468501/))
 5. [STABLE FILTERING - PART 2](https://caseymuratori.com/blog_0036)([Перевод](https://habr.com/ru/post/468629/))
 6. [A hands-on introduction to video technology: image, video, codec (av1, vp9, h265) and more (ffmpeg encoding)](https://github.com/leandromoreira/digital_video_introduction)([Перевод - часть I](https://habr.com/ru/company/edison/blog/481418/), [часть II](https://habr.com/ru/company/edison/blog/480430/))
-7. [Как добавить кодек в FFmpeg](https://habr.com/ru/post/480714/)
-8. [TCP vs reliable UDP - Forum RSDN] (https://rsdn.org/forum/network/4964507.all)
-9. [Kirogi - is a ground control application for drones](https://kirogi.org)
-10. [OBS Studio - Free and open source software for video recording and live streaming](https://obsproject.com)
+7. [FFmpeg libav tutorial](https://github.com/leandromoreira/ffmpeg-libav-tutorial)([Перевод](https://habr.com/ru/company/edison/blog/495614/))
+8. [Как добавить кодек в FFmpeg](https://habr.com/ru/post/480714/)
+9. [TCP vs reliable UDP - Forum RSDN] (https://rsdn.org/forum/network/4964507.all)
+10. [Kirogi - is a ground control application for drones](https://kirogi.org)
+11. [OBS Studio - Free and open source software for video recording and live streaming](https://obsproject.com)
 
 ### Resources for video encoding/decoding, streams, protocols
 
@@ -80,7 +81,7 @@
 * [FFmpeg практика аппаратного декодирования DXVA2](https://habr.com/ru/post/461735/)
 * [Видеоплеер на базе ffmpeg](https://habr.com/en/post/137793/)
 * [Доработка видеоплеера ffmpeg](https://habr.com/ru/post/138426/)
-* [An ffmpeg and SDL Tutorial](http://dranger.com/ffmpeg/tutorial01.html)
+* [An ffmpeg and SDL Tutorial](http://dranger.com/ffmpeg/ffmpeg.html) ([Перевод](https://m.habr.com/ru/company/edison/blog/502844/))
 * [Multimedia Technology Basics: FourCCs, AVI Codecs, ASF Codecs, WAV Codecs, MOV Codecs, RM Codecs, YUV Codecs, RGB Codecs, Lossy and Lossless Codecs and More](https://multimedia.cx/mmbasics.txt)
 * [Using ffmpeg to generate RTSP from webcam](https://stackoverflow.com/questions/33800086/using-ffmpeg-to-generate-rtsp-from-webcam)
 * [RTSP-Server - Lightweight RTSP/RTP streaming media server](https://github.com/revmischa/rtsp-server)
