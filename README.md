@@ -1,2 +1,1 @@
-# pfs-multimedia
-pfs::MultiMedia
+# multimedia-lib
