@@ -67,6 +67,10 @@
   * video encoding with variable and fixed frame rate
 * audio encoding
 
+### Audio
+
+* [Source code for Linux Sound Programming by Jan Newmarch](https://github.com/Apress/linux-sound-programming)
+
 ### Unsorted resources
 * [ffmpeg Documentation](https://ffmpeg.org/ffmpeg.html)
 * [ffplay Documentation](https://ffmpeg.org/ffplay.html)
