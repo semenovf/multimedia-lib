@@ -70,6 +70,7 @@
 ### Audio
 
 * [Source code for Linux Sound Programming by Jan Newmarch](https://github.com/Apress/linux-sound-programming)
+* [Enumerating Audio Devices](https://docs.microsoft.com/en-us/windows/win32/coreaudio/enumerating-audio-devices)
 
 ### Unsorted resources
 * [ffmpeg Documentation](https://ffmpeg.org/ffmpeg.html)
