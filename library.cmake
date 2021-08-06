@@ -10,21 +10,29 @@ cmake_minimum_required (VERSION 3.5)
 project(multimedia-lib CXX)
 
 option(ENABLE_PULSEAUDIO "Enable PulseAudio as backend" ON)
+set(_audio_backend_FOUND OFF)
 
 #if (UNIX AND NOT APPLE AND NOT CYGWIN)
 if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
-
     if (ENABLE_PULSEAUDIO)
         # In Ubuntu it is a part of 'libpulse-dev' package
-        find_package(PulseAudio REQUIRED)
+        find_package(PulseAudio)
 
         if (PULSEAUDIO_FOUND)
             message(STATUS "PulseAudio version: ${PULSEAUDIO_VERSION}")
 
             list(APPEND SOURCES
                 ${CMAKE_CURRENT_LIST_DIR}/src/device_info_pulseaudio.cpp)
+            set(_audio_backend_FOUND ON)
         endif()
     endif()
+endif()
+
+if (NOT _audio_backend_FOUND)
+    message(FATAL_ERROR
+        " No any Audio backend found\n"
+        " For Debian-based distributions it may be PulseAudio ('libpulse-dev' package)"
+    )
 endif()
 
 # if (UNIX)
