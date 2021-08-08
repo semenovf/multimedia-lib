@@ -7,7 +7,6 @@
 //      2021.08.03 Initial version.
 ////////////////////////////////////////////////////////////////////////////////
 #include "pfs/multimedia/audio.hpp"
-#include <pulse/pulseaudio.h>
 #include <iostream>
 #include <iomanip>
 #include <string>

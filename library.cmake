@@ -26,6 +26,10 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
             set(_audio_backend_FOUND ON)
         endif()
     endif()
+elseif(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
+    list(APPEND SOURCES
+        ${CMAKE_CURRENT_LIST_DIR}/src/device_info_win32.cpp)
+    set(_audio_backend_FOUND ON)
 endif()
 
 if (NOT _audio_backend_FOUND)
