@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2021 Vladislav Trifochkin
 //
-// This file is part of [multimedia-lib](https://github.com/semenovf/multimedia-lib) library.
+// This file is part of `multimedia-lib`.
 //
 // Changelog:
 //      2021.08.03 Initial version.
@@ -10,7 +10,6 @@
 #include <pulse/pulseaudio.h>
 #include <vector>
 
-namespace pfs {
 namespace multimedia {
 namespace audio {
 
@@ -301,7 +300,7 @@ public:
 };
 
 // Default source/input device
-PFS_MULTIMEDIA_DLL_API device_info default_input_device ()
+MULTIMEDIA__EXPORT device_info default_input_device ()
 {
     session sess;
     device_info result;
@@ -333,7 +332,7 @@ PFS_MULTIMEDIA_DLL_API device_info default_input_device ()
 }
 
 // Default sink/ouput device
-PFS_MULTIMEDIA_DLL_API device_info default_output_device ()
+MULTIMEDIA__EXPORT device_info default_output_device ()
 {
     session sess;
     device_info result;
@@ -364,7 +363,7 @@ PFS_MULTIMEDIA_DLL_API device_info default_output_device ()
     return result;
 }
 
-PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
+MULTIMEDIA__EXPORT std::vector<device_info> fetch_devices (device_mode mode)
 {
     std::vector<device_info> result;
     session sess;
@@ -396,4 +395,4 @@ PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
     return result;
 }
 
-}}} // namespace pfs::multimedia::audio
+}} // namespace multimedia::audio

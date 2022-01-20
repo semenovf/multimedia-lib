@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2021 Vladislav Trifochkin
 //
-// This file is part of [multimedia-lib](https://github.com/semenovf/multimedia-lib) library.
+// This file is part of `multimedia-lib`.
 //
 // Changelog:
 //      2021.08.05 Initial version.
@@ -9,7 +9,6 @@
 #pragma once
 #include <system_error>
 
-namespace pfs {
 namespace multimedia {
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -57,5 +56,5 @@ inline std::system_error make_exception (errc e)
     return std::system_error(make_error_code(e));
 }
 
-}} // namespace pfs::multimedia
+} // namespace multimedia
 

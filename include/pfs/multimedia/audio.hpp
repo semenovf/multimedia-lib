@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2021 Vladislav Trifochkin
 //
-// This file is part of [multimedia-lib](https://github.com/semenovf/multimedia-lib) library.
+// This file is part of `multimedia-lib`.
 //
 // Changelog:
 //      2021.08.03 Initial version.
@@ -11,7 +11,6 @@
 #include <string>
 #include <vector>
 
-namespace pfs {
 namespace multimedia {
 namespace audio {
 
@@ -27,8 +26,8 @@ struct device_info
     std::string readable_name;
 };
 
-PFS_MULTIMEDIA_DLL_API device_info default_input_device ();  // default source/input device
-PFS_MULTIMEDIA_DLL_API device_info default_output_device (); // default sink/output device
-PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode);
+MULTIMEDIA__EXPORT device_info default_input_device ();  // default source/input device
+MULTIMEDIA__EXPORT device_info default_output_device (); // default sink/output device
+MULTIMEDIA__EXPORT std::vector<device_info> fetch_devices (device_mode mode);
 
-}}} // namespace pfs::multimedia::audio
+}} // namespace multimedia::audio

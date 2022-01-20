@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2021 Vladislav Trifochkin
 //
-// This file is part of [multimedia-lib](https://github.com/semenovf/multimedia-lib) library.
+// This file is part of `multimedia-lib`.
 //
 // Changelog:
 //      2021.08.07 Initial version.
@@ -9,18 +9,17 @@
 #include "pfs/multimedia/audio.hpp"
 #include <mmdeviceapi.h>
 #include <strmif.h> // ICreateDevEnum
-#include <functiondiscoverykeys_devpkey.h> // PROPERTYKEY 
+#include <functiondiscoverykeys_devpkey.h> // PROPERTYKEY
 #include <vector>
 #include <cwchar>
 
-namespace pfs {
 namespace multimedia {
 namespace audio {
 
 // Avoid warning:
-// warning C4996: 'wcsrtombs': This function or variable may be unsafe. 
-//                 Consider using wcsrtombs_s instead. To disable 
-//                 deprecation, use _CRT_SECURE_NO_WARNINGS. See online 
+// warning C4996: 'wcsrtombs': This function or variable may be unsafe.
+//                 Consider using wcsrtombs_s instead. To disable
+//                 deprecation, use _CRT_SECURE_NO_WARNINGS. See online
 //                 help for details.
 #pragma warning(disable: 4996)
 
@@ -79,15 +78,15 @@ public:
                     success  = true;
                 } else {
                     // Possible errors:
-                    // REGDB_E_CLASSNOTREG - A specified class is not registered in the 
-                    //     registration database. Also can indicate that the type of server 
-                    //     you requested in the CLSCTX enumeration is not registered or the 
+                    // REGDB_E_CLASSNOTREG - A specified class is not registered in the
+                    //     registration database. Also can indicate that the type of server
+                    //     you requested in the CLSCTX enumeration is not registered or the
                     //     values for the server types in the registry are corrupt.
-                    // E_NOINTERFACE - The specified class does not implement the requested 
+                    // E_NOINTERFACE - The specified class does not implement the requested
                     //     interface, or the controlling IUnknown does not expose the
                     //     requested interface.
 
-                    // There might be error handling here 
+                    // There might be error handling here
                     ;
                 }
             }
@@ -138,7 +137,7 @@ public:
             if (SUCCEEDED(hr)) {
                 success = true;
             } else {
-                // There might be error handling here 
+                // There might be error handling here
                 // NOTE! But there is no apparent reason for the error.
                 ;
             }
@@ -159,7 +158,7 @@ class IMMDevice_guard
     IMMDevice ** ppDevice {nullptr};
 
 public:
-    IMMDevice_guard (IMMDevice ** pp) 
+    IMMDevice_guard (IMMDevice ** pp)
         : ppDevice(pp)
     {}
 
@@ -169,7 +168,7 @@ public:
             (*ppDevice)->Release();
             *ppDevice = nullptr;
             ppDevice = nullptr;
-        }          
+        }
     }
 };
 
@@ -184,7 +183,7 @@ static bool device_info_helper (IMMDevice * pEndpoint, device_info & di)
         // https://docs.microsoft.com/en-us/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevice-getid
         LPWSTR pwszID = nullptr;
         auto hr = pEndpoint->GetId(& pwszID);
-        
+
         if (SUCCEEDED(hr)) {
             hr = pEndpoint->OpenPropertyStore(STGM_READ, & pProps);
 
@@ -201,9 +200,9 @@ static bool device_info_helper (IMMDevice * pEndpoint, device_info & di)
                     di.readable_name = convert_wide(varName.pwszVal);
                     PropVariantClear(& varName);
 
-                    result = true;                         
+                    result = true;
                 } else { // pProps->GetValue()
-                    // There might be error handling here 
+                    // There might be error handling here
                     ;
                 }
 
@@ -212,12 +211,12 @@ static bool device_info_helper (IMMDevice * pEndpoint, device_info & di)
                     pProps = nullptr;
                 }
             } else { // pEndpoint->OpenPropertyStore()
-                // There might be error handling here 
+                // There might be error handling here
                 // NOTE! But there is no apparent reason for the error.
-                ;                            
+                ;
             }
         } else { // pEndpoint->GetId()
-            // There might be error handling here 
+            // There might be error handling here
             ;
         }
 
@@ -226,7 +225,7 @@ static bool device_info_helper (IMMDevice * pEndpoint, device_info & di)
             pwszID = nullptr;
         }
     } else {
-        // There might be error handling here 
+        // There might be error handling here
         // E_INVALIDARG - Parameter 'device_index' is not a valid device number.
         ;
     }
@@ -268,19 +267,19 @@ static device_info default_device_helper (device_mode mode)
 }
 
 // Default source/input device
-PFS_MULTIMEDIA_DLL_API device_info default_input_device ()
+MULTIMEDIA__EXPORT device_info default_input_device ()
 {
     return default_device_helper(device_mode::input);
 }
 
 // Default sink/ouput device
-PFS_MULTIMEDIA_DLL_API device_info default_output_device ()
+MULTIMEDIA__EXPORT device_info default_output_device ()
 {
     return default_device_helper(device_mode::output);
 }
 
 // https://docs.microsoft.com/en-us/windows/win32/coreaudio/device-properties
-PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
+MULTIMEDIA__EXPORT std::vector<device_info> fetch_devices (device_mode mode)
 {
     std::vector<device_info> result;
     IMMDeviceEnumerator * pEnumerator = nullptr;
@@ -294,7 +293,7 @@ PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
             // https://docs.microsoft.com/en-us/windows/win32/api/mmdeviceapi/nf-mmdeviceapi-immdevicecollection-getcount
             UINT count = 0;
             auto hr = pEndpoints->GetCount(& count);
-            
+
             if (SUCCEEDED(hr)) {
                 for (UINT device_index = 0; device_index < count; device_index++) {
                     IMMDevice * pEndpoint = nullptr;
@@ -310,13 +309,13 @@ PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
                             result.push_back(std::move(di));
                         }
                     } else {
-                        // There might be error handling here 
+                        // There might be error handling here
                         // E_INVALIDARG - Parameter 'device_index' is not a valid device number.
                         ;
                     }
                 }
             } else { // pEndpoints->GetCount()
-                // There might be error handling here 
+                // There might be error handling here
                 // NOTE! But there is no apparent reason for the error.
                 ;
             }
@@ -326,4 +325,4 @@ PFS_MULTIMEDIA_DLL_API std::vector<device_info> fetch_devices (device_mode mode)
     return result;
 }
 
-}}} // namespace pfs::multimedia::audio
+}} // namespace multimedia::audio

@@ -7,20 +7,22 @@
 //
 // Changelog:
 //      2021.06.21 Initial version.
+//      2022.01.20 Renamed macros.
 ////////////////////////////////////////////////////////////////////////////////
 #pragma once
-#ifndef PFS_MULTIMEDIA_STATIC_LIB
-#   ifndef PFS_MULTIMEDIA_DLL_API
-#       if defined(_MSC_VER)
-#           if defined(PFS_MULTIMEDIA_DLL_EXPORTS)
-#               define PFS_MULTIMEDIA_DLL_API __declspec(dllexport)
+
+#ifndef MULTIMEDIA__STATIC
+#   ifndef MULTIMEDIA__EXPORT
+#       if _MSC_VER
+#           if defined(MULTIMEDIA__EXPORTS)
+#               define MULTIMEDIA__EXPORT __declspec(dllexport)
 #           else
-#               define PFS_MULTIMEDIA_DLL_API __declspec(dllimport)
+#               define MULTIMEDIA__EXPORT __declspec(dllimport)
 #           endif
+#       else
+#           define MULTIMEDIA__EXPORT
 #       endif
 #   endif
-#endif // !PFS_MULTIMEDIA_STATIC_LIB
-
-#ifndef PFS_MULTIMEDIA_DLL_API
-#   define PFS_MULTIMEDIA_DLL_API
-#endif
+#else
+#   define MULTIMEDIA__EXPORT
+#endif // !MULTIMEDIA__STATIC

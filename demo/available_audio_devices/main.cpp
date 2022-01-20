@@ -12,7 +12,7 @@
 #include <string>
 #include <cerrno>
 
-using namespace pfs::multimedia;
+using namespace multimedia;
 
 int main (int argc, char * argv[])
 {
