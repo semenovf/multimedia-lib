@@ -11,8 +11,8 @@ cmake_minimum_required (VERSION 3.11)
 project(multimedia-lib-ALL CXX)
 
 option(MULTIMEDIA__BUILD_STRICT "Build with strict policies: C++ standard required, C++ extension is OFF etc" ON)
-option(MULTIMEDIA__BUILD_TESTS "Build tests" ON)
-option(MULTIMEDIA__BUILD_DEMO "Build examples/demo" ON)
+option(MULTIMEDIA__BUILD_TESTS "Build tests" OFF)
+option(MULTIMEDIA__BUILD_DEMO "Build examples/demo" OFF)
 option(MULTIMEDIA__ENABLE_COVERAGE "Build tests with coverage support" OFF)
 
 if (NOT PORTABLE_TARGET__ENABLED)
