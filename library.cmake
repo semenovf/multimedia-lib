@@ -8,7 +8,7 @@
 #      2022.01.20 Refactored for use `portable_target`.
 ################################################################################
 cmake_minimum_required (VERSION 3.11)
-project(multimedia-lib CXX)
+project(multimedia CXX)
 
 option(MULTIMEDIA__STATIC_ONLY "Build static only" OFF)
 option(MULTIMEDIA__ENABLE_PULSEAUDIO "Enable PulseAudio as backend" ON)
@@ -62,6 +62,10 @@ if (NOT _audio_backend_FOUND)
         " No any Audio backend found\n"
         " For Debian-based distributions it may be PulseAudio ('libpulse-dev' package)")
 endif()
+
+if (MSVC)
+    portable_target(COMPILE_OPTIONS ${PROJECT_NAME} "/wd4996")
+endif(MSVC)
 
 portable_target(INCLUDE_DIRS ${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 portable_target(EXPORTS ${PROJECT_NAME} MULTIMEDIA__EXPORTS MULTIMEDIA__STATIC)

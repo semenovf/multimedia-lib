@@ -9,4 +9,5 @@
 project(available_audio_devices)
 
 add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE pfs::multimedia::static)
+#target_link_libraries(${PROJECT_NAME} PRIVATE pfs::multimedia::static)
+target_link_libraries(${PROJECT_NAME} PRIVATE pfs::multimedia)
