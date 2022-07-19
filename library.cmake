@@ -78,3 +78,7 @@ if (MSVC)
     portable_target(COMPILE_OPTIONS ${PROJECT_NAME} "/wd4996")
     portable_target(COMPILE_OPTIONS ${PROJECT_NAME}-static "/wd4996")
 endif(MSVC)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set_property(TARGET ${PROJECT_NAME}-static PROPERTY POSITION_INDEPENDENT_CODE ON)
+endif()
